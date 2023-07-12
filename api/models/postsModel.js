@@ -1,39 +1,32 @@
 const db = require("../../data/db-config");
 
-// Tüm yorumları veritabanından al
-exports.getAllComments = async () => {
-  const comments = await db("comments").select("*");
-  return comments;
+// Tüm postları veritabanından al
+exports.getAllPosts = async () => {
+  const posts = await db("posts");
+  return posts;
 };
 
-// ID'ye göre bir yorumu veritabanından al
-exports.getCommentById = async (commentId) => {
-  const comment = await db("comments").where({ comment_id: commentId }).first();
-  return comment;
+// ID'ye göre bir postu veritabanından al
+exports.getPostById = async (postId) => {
+  const post = await db("posts").where({ post_id: postId }).first();
+  return post;
 };
 
-// Post ID'ye göre yorumları veritabanından al
-exports.getCommentsByPostId = async (postId) => {
-  const comments = await db("comments").where("post_id", postId).select("*");
-  return comments;
+// Yeni bir post oluştur
+exports.createPost = async (post) => {
+  const [newPost] = await db("posts").insert(post, "*");
+  return newPost;
 };
 
-// Yeni bir yorum oluştur
-exports.createComment = async (comment) => {
-  const createdComment = await db("comments").insert(comment).returning("*");
-  return createdComment;
-};
-
-// Bir yorumu güncelle
-exports.updateComment = async (commentId, updatedComment) => {
-  await db("comments").where({ comment_id: commentId }).update(updatedComment);
-  const updated = await db("comments").where({ comment_id: commentId }).first();
+// Bir postu güncelle
+exports.updatePost = async (postId, updatedPost) => {
+  await db("posts").where({ post_id: postId }).update(updatedPost);
+  const updated = await db("posts").where({ post_id: postId }).first();
   return updated;
 };
 
-// Bir yorumu sil
-exports.deleteComment = async (commentId) => {
-  await db("comments").where({ comment_id: commentId }).del();
-  const deleted = await db("comments").where({ comment_id: commentId }).first();
+// Bir postu sil
+exports.deletePost = async (postId) => {
+  const deleted = await db("posts").where({ post_id: postId }).del();
   return deleted;
 };

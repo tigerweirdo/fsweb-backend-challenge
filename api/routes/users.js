@@ -1,22 +1,73 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Users = require('../models/usersModel')
+const userModel = require("../models/usersModel");
+const { limited } = require("../middleware/authMiddleware");
 
-// Burada 'Users' modelini require etmeliyiz. 
-// Users modelini daha oluşturmadıysak, bu satırı daha sonra ekleyeceğiz.
-
-
-// Get all users
-router.get('/', async (req, res) => {
-    try {
-        // Tüm kullanıcıları getirecek bir Users model fonksiyonu olmalı.
-         const users = await Users.getAll();
-        // res.json(users);
-    } catch (err) {
-        res.status(500).json({ message: 'Failed to get users' });
-    }
+// GET /users
+router.get("/", async (req, res) => {
+  try {
+    const users = await userModel.getAllUsers();
+    res.json(users);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Kullanıcıları getirirken bir hata oluştu." });
+  }
 });
 
-// More routes (POST, PUT, DELETE) will go here
+// GET /users/:id
+router.get("/:id", async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const user = await userModel.getUserById(userId);
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ message: "Kullanıcı bulunamadı." });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Kullanıcıyı getirirken bir hata oluştu." });
+  }
+});
+
+// DELETE /users/:id
+router.delete("/:id", limited, async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const deletedUser = await userModel.deleteUser(userId);
+    if (deletedUser) {
+      res.json({ message: "Kullanıcı başarıyla silindi." });
+    } else {
+      res.status(404).json({ message: "Kullanıcı bulunamadı." });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Kullanıcı silinirken bir hata oluştu." });
+  }
+});
+
+// PUT /users/:id
+
+router.put("/:id", limited, async (req, res) => {
+  const userId = req.params.id;
+  const { username, password } = req.body;
+  const user = { username, password };
+
+  try {
+    const updatedUser = await userModel.updateUser(userId, user);
+    if (updatedUser) {
+      res.json(updatedUser);
+    } else {
+      res.status(404).json({ message: "Kullanıcı bulunamadı." });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Kullanıcı güncellenirken bir hata oluştu." });
+  }
+});
 
 module.exports = router;
