@@ -62,7 +62,7 @@ describe("Post testleri", () => {
   test("[5] Başarılı login oldu.", async () => {
     //act
     var loginPayload = {
-      username: "Temmuz",
+      username: "temmuz",
       email: "temmuz@example.com",
       password: "1234",
     };
@@ -86,7 +86,7 @@ describe("Post testleri", () => {
 
     // Login to get the authorization token
     const loginPayload = {
-      username: "Temmuz",
+      username: "temmuz",
       email: "temmuz@example.com",
       password: "1234",
     };
@@ -113,7 +113,7 @@ describe("Post testleri", () => {
 
     // Login to get the authorization token
     const loginPayload = {
-      username: "Temmuz",
+      username: "temmuz",
       email: "temmuz@example.com",
       password: "1234",
     };
@@ -138,7 +138,7 @@ describe("Delete testleri", () => {
   test("[8] tweet siliniyor mu", async () => {
     // Login to get the authorization token
     const loginPayload = {
-      username: "Temmuz",
+      username: "temmuz",
       email: "temmuz@example.com",
       password: "1234",
     };
@@ -170,7 +170,7 @@ describe("Delete testleri", () => {
   test("[9] comment siliniyor mu", async () => {
     // Login to get the authorization token
     const loginPayload = {
-      username: "Temmuz",
+      username: "temmuz",
       email: "temmuz@example.com",
       password: "1234",
     };
@@ -206,7 +206,7 @@ describe("Put testleri", () => {
   test("[10] tweet güncelleniyor mu", async () => {
     // Login to get the authorization token
     const loginPayload = {
-      username: "Temmuz",
+      username: "temmuz",
       email: "temmuz@example.com",
       password: "1234",
     };
@@ -239,7 +239,7 @@ describe("Put testleri", () => {
   test("[11] comment güncelleniyor mu", async () => {
     // Login to get the authorization token
     const loginPayload = {
-      username: "Temmuz",
+      username: "temmuz",
       email: "temmuz@example.com",
       password: "1234",
     };
