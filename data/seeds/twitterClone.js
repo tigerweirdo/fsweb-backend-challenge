@@ -13,27 +13,27 @@ exports.seed = async function (knex) {
     await knex("users").insert([
       {
         user_id: 1,
-        username: "ibrahim",
+        username: "temmuz",
         password: "1234",
-        email: "ibrahim@example.com",
+        email: "temmuz@example.com",
         avatar:
-          "https://github.com/ibrahimfevzi/fsweb-backend-challenge/blob/main/assets/avatar1.png?raw=true",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiNJW6PmSHckO6yxG6h2RhLLd3gB_JXOGZPQWAB1Q&s",
       },
       {
         user_id: 2,
-        username: "kerem",
+        username: "ismet",
         password: "1234",
-        email: "kerem@example.com",
+        email: "ismet@example.com",
         avatar:
-          "https://github.com/ibrahimfevzi/fsweb-backend-challenge/blob/main/assets/kerem.png?raw=true",
+          "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cyclistmag.com.tr%2F2020%2F12%2F11%2Fbir-ayi-ile-karsilasirsam-ne-yapmaliyim%2F&psig=AOvVaw33xYKh1U3985V4A-An0PQr&ust=1689884080560000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPsPXKm4ADFQAAAAAdAAAAABAE",
       },
       {
         user_id: 3,
-        username: "mark",
-        password: "password3",
-        email: "mark@example.com",
+        username: "chris",
+        password: "password",
+        email: "chris@example.com",
         avatar:
-          "https://media.npr.org/assets/artslife/arts/2010/11/mark-twain/mark-twain-6fa45e42400eea8cac3953cb267d66a33825a370-s1100-c50.jpg",
+          "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRRv9ICxXjK-LVFv-lKRId6gB45BFoNCLsZ4dk7bZpYGblPLPG-9aYss0Z0wt2PmWDb",
       },
     ]);
   
@@ -65,7 +65,7 @@ exports.seed = async function (knex) {
         comment_id: 1,
         user_id: 2,
         post_id: 1,
-        content: "Nice to meet you, İbrahim!",
+        content: "Nice to meet you, Temmuz!",
         created_at: new Date(),
       },
       {
